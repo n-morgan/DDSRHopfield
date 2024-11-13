@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 # Importing Hopfield-specific modules.
 from hflayers import Hopfield, HopfieldPooling, HopfieldLayer
 from hflayers.auxiliary.data import LatchSequenceSet
+
 # Importing PyTorch specific modules.
 from torch import Tensor
 from torch.nn import Flatten, Linear, LSTM, Module, Sequential
@@ -15,22 +16,36 @@ from torch.nn.utils import clip_grad_norm_
 from torch.optim import AdamW
 from torch.utils.data import DataLoader
 from torch.utils.data.sampler import SubsetRandomSampler
+# Importing Curated Data 
+
+from data import SentenceDataset
+
+dataset = SentenceDataset(file_path="1000sents.csv", padding=512)
+train_size = int(0.8 * len(dataset))
+eval_size = len(dataset) - train_size
+
+train_dataset, eval_dataset = torch.utils.data.random_split(dataset, [train_size, eval_size])
+data_loader_train = DataLoader(train_dataset, batch_size=32, shuffle=True)
+data_loader_eval = DataLoader(eval_dataset, batch_size=32, shuffle=False)
+
 
 
 sns.set()
 device = torch.device(r'cuda:0' if torch.cuda.is_available() else r'cpu')
-
 
 latch_sequence_set = LatchSequenceSet(
     num_samples=4096,
     num_instances=32,
     num_characters=20)
 
-sampler_train = SubsetRandomSampler(list(range(512, 4096 - 512)))
-data_loader_train = DataLoader(dataset=latch_sequence_set, batch_size=32, sampler=sampler_train)
+# Create data loader of training set.
+#sampler_train = SubsetRandomSampler(list(range(512, 4096 - 512)))
+#data_loader_train = DataLoader(dataset=latch_sequence_set, batch_size=32, sampler=sampler_train)
 
-sampler_eval = SubsetRandomSampler(list(range(512)) + list(range(4096 - 512, 4096)))
-data_loader_eval = DataLoader(dataset=latch_sequence_set, batch_size=32, sampler=sampler_eval)
+# Create data loader of validation set.
+#sampler_eval = SubsetRandomSampler(list(range(512)) + list(range(4096 - 512, 4096)))
+#data_loader_eval = DataLoader(dataset=latch_sequence_set, batch_size=32, sampler=sampler_eval)
+
 
 
 def train_epoch(network: Module,
@@ -50,8 +65,8 @@ def train_epoch(network: Module,
     for sample_data in data_loader:
         data, target = sample_data[r'data'], sample_data[r'target']
         data, target = data.to(device=device), target.to(device=device)
-
         # Process data by Hopfield-based network.
+
         model_output = network.forward(input=data)
 
         # Update network parameters.
@@ -172,20 +187,26 @@ def plot_performance(loss: pd.DataFrame,
 if __name__ == "__main__":
     set_seed()
 
-    hopfield = Hopfield(
-        input_size=latch_sequence_set.num_characters)
-    output_projection = Linear(in_features=hopfield.output_size * latch_sequence_set.num_instances, out_features=1)
+    # SentenceDataset replaces LatchSequenceSet and provides sentences padded to 512
+    dataset = SentenceDataset(file_path="1000sents.csv", padding=512)
+
+    # Hopfield network processes the input size (512 features per instance)
+    hopfield = Hopfield(input_size=dataset.padding)  # Assuming each sentence is padded to 512
+    output_projection = Linear(in_features=hopfield.output_size * 32, out_features=1)  # 32 instances in a batch
+
+    # Flatten the output from Hopfield, which has a shape of [32, 512] (after processing the batch of 32)
     network = Sequential(hopfield, Flatten(), output_projection, Flatten(start_dim=0)).to(device=device)
+
     optimiser = AdamW(params=network.parameters(), lr=1e-3)
 
-
+    # Train and evaluate the model
     losses, accuracies = operate(
-    network=network,
-    optimiser=optimiser,
-    data_loader_train=data_loader_train,
-    data_loader_eval=data_loader_eval,
-    num_epochs=20)
-
+        network=network,
+        optimiser=optimiser,
+        data_loader_train=data_loader_train,
+        data_loader_eval=data_loader_eval,
+        num_epochs=20
+    )
 
     plot_performance(loss=losses, accuracy=accuracies, log_file=f'/Users/velocity/Documents/Holder/Project/CodingStuff/18DDSR/hopfield_base.pdf')
 
