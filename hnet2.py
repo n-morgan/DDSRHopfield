@@ -10,7 +10,7 @@ from hflayers.auxiliary.data import LatchSequenceSet
 
 # Importing PyTorch specific modules.
 from torch import Tensor
-from torch.nn import Flatten, Linear, LSTM, Module, Sequential
+from torch.nn import Flatten, Linear, LSTM, Module, Sequential, Embedding
 from torch.nn.functional import binary_cross_entropy_with_logits
 from torch.nn.utils import clip_grad_norm_
 from torch.optim import AdamW
@@ -71,7 +71,7 @@ def train_epoch(network: Module,
 
         # Update network parameters.
         optimiser.zero_grad()
-        loss = binary_cross_entropy_with_logits(input=model_output, target=target, reduction=r'mean')
+        loss = binary_cross_entropy_with_logits(input=model_output.float(), target=target.float(), reduction=r'mean')
         loss.backward()
         clip_grad_norm_(parameters=network.parameters(), max_norm=1.0, norm_type=2)
         optimiser.step()
@@ -104,7 +104,7 @@ def eval_iter(network: Module,
 
             # Process data by Hopfield-based network.
             model_output = network.forward(input=data)
-            loss = binary_cross_entropy_with_logits(input=model_output, target=target, reduction=r'mean')
+            loss = binary_cross_entropy_with_logits(input=model_output, target=target.float(), reduction=r'mean')
 
             # Compute performance measures of current model.
             accuracy = (model_output.sigmoid().round() == target).to(dtype=torch.float32).mean()
@@ -187,19 +187,28 @@ def plot_performance(loss: pd.DataFrame,
 if __name__ == "__main__":
     set_seed()
 
-    # SentenceDataset replaces LatchSequenceSet and provides sentences padded to 512
-    dataset = SentenceDataset(file_path="1000sents.csv", padding=512)
+    embedding_dim = 128  # You can adjust this dimension as needed
+    vocab_size = 131000
+    embedding_layer = Embedding(num_embeddings=vocab_size, embedding_dim=embedding_dim)
 
-    # Hopfield network processes the input size (512 features per instance)
-    hopfield = Hopfield(input_size=dataset.padding)  # Assuming each sentence is padded to 512
-    output_projection = Linear(in_features=hopfield.output_size * 32, out_features=1)  # 32 instances in a batch
+# Hopfield network with input_size matching the embedding dimension
+    hopfield = Hopfield(input_size=embedding_dim)
 
-    # Flatten the output from Hopfield, which has a shape of [32, 512] (after processing the batch of 32)
-    network = Sequential(hopfield, Flatten(), output_projection, Flatten(start_dim=0)).to(device=device)
+# Output projection layer
+    output_projection = Linear(in_features=512 * hopfield.output_size, out_features=512)
 
+# Define the network structure
+    network = Sequential(
+        embedding_layer,   # Converts token indices to embeddings
+        hopfield,          # Processes embeddings
+        Flatten(start_dim=1),  # Flatten the Hopfield output
+        output_projection  # Project to single output
+    ).to(device=device)
+
+# Optimizer setup
     optimiser = AdamW(params=network.parameters(), lr=1e-3)
 
-    # Train and evaluate the model
+# Train and evaluate the model
     losses, accuracies = operate(
         network=network,
         optimiser=optimiser,
@@ -207,6 +216,5 @@ if __name__ == "__main__":
         data_loader_eval=data_loader_eval,
         num_epochs=20
     )
-
     plot_performance(loss=losses, accuracy=accuracies, log_file=f'/Users/velocity/Documents/Holder/Project/CodingStuff/18DDSR/hopfield_base.pdf')
 
