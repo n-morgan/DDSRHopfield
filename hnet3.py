@@ -1,4 +1,46 @@
-ler_train)
+import torch                    
+import pandas as pd
+import seaborn as sns
+from typing import Tuple
+import matplotlib.pyplot as plt
+
+# Importing Hopfield-specific modules.
+from hflayers import Hopfield, HopfieldPooling, HopfieldLayer
+from hflayers.auxiliary.data import LatchSequenceSet
+
+# Importing PyTorch specific modules.
+from torch import Tensor
+from torch.nn import Flatten, Linear, LSTM, Module, Sequential, Embedding
+from torch.nn.functional import binary_cross_entropy_with_logits
+from torch.nn.utils import clip_grad_norm_
+from torch.optim import AdamW
+from torch.utils.data import DataLoader
+from torch.utils.data.sampler import SubsetRandomSampler
+# Importing Curated Data 
+
+from data import SentenceDataset
+
+dataset = SentenceDataset(file_path="1000sents.csv", padding=512)
+train_size = int(0.8 * len(dataset))
+eval_size = len(dataset) - train_size
+
+train_dataset, eval_dataset = torch.utils.data.random_split(dataset, [train_size, eval_size])
+data_loader_train = DataLoader(train_dataset, batch_size=32, shuffle=True)
+data_loader_eval = DataLoader(eval_dataset, batch_size=32, shuffle=False)
+
+
+
+sns.set()
+device = torch.device(r'cuda:0' if torch.cuda.is_available() else r'cpu')
+
+latch_sequence_set = LatchSequenceSet(
+    num_samples=4096,
+    num_instances=32,
+    num_characters=20)
+
+# Create data loader of training set.
+#sampler_train = SubsetRandomSampler(list(range(512, 4096 - 512)))
+#data_loader_train = DataLoader(dataset=latch_sequence_set, batch_size=32, sampler=sampler_train)
 
 # Create data loader of validation set.
 #sampler_eval = SubsetRandomSampler(list(range(512)) + list(range(4096 - 512, 4096)))
@@ -23,8 +65,6 @@ def train_epoch(network: Module,
     for sample_data in data_loader:
         data, target = sample_data[r'data'], sample_data[r'target']
         data, target = data.to(device=device), target.to(device=device)
-        print(data.shape, target.shape)
-        exit()
         # Process data by Hopfield-based network.
 
         model_output = network.forward(input=data)
@@ -148,22 +188,15 @@ def plot_performance(loss: pd.DataFrame,
 if __name__ == "__main__":
     set_seed()
 
-    embedding_dim = 128 
-    vocab_size = 131000
-    embedding_layer = Embedding(num_embeddings=vocab_size, embedding_dim=embedding_dim)
 
 # Hopfield network with input_size matching the embedding dimension
-    hopfield = Hopfield(input_size=embedding_dim)
+    hopfield = Hopfield(input_size=512)
 
 # Output projection layer
-    output_projection = Linear(in_features=512*hopfield.output_size, out_features=512)
 
 # Define the network structure
     network = Sequential(
-        embedding_layer,   # Converts token indices to embeddings
         hopfield,          # Processes embeddings
-        Flatten(start_dim=1),  # Flatten the Hopfield output
-        output_projection  # Project to desired output
     ).to(device=device)
 
 # Optimizer setup
