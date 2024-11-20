@@ -1,6 +1,7 @@
 import pandas as pd
 import torch
 from torch.utils.data import Dataset, DataLoader
+from torch import nn
 from digitize import Digitize
 # from sklearn.model_selection import train_test_split
 
@@ -20,8 +21,8 @@ class SentenceDataset(Dataset):
     def _prepare_dataset(self):
         self.dataset = [
             {
-                'data': torch.tensor(Digitize(sentence, padding=self.padding).encode(), dtype=torch.long),
-                'target': torch.tensor(Digitize(sentence, padding=self.padding).encode(), dtype=torch.long)
+                'data': nn.functional.one_hot(torch.tensor(Digitize(sentence, padding=self.padding).encode(), dtype=torch.long), 131000),
+                'target': nn.functional.one_hot(torch.tensor(Digitize(sentence, padding=self.padding).encode(), dtype=torch.long), 131000)
             }
             for sentence in self.sentences
         ]

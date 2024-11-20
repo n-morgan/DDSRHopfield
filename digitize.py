@@ -66,3 +66,5 @@ if __name__ == "__main__":
     print(sentence.padding)
     print(len(sentence.encode()))
 
+    print(len(Digitize.m_tokenizer))
+

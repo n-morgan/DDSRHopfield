@@ -189,7 +189,6 @@ if __name__ == "__main__":
     set_seed()
 
 
-# Hopfield network with input_size matching the embedding dimension
     hopfield = Hopfield(input_size=512)
 
 # Output projection layer
