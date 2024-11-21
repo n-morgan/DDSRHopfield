@@ -21,8 +21,8 @@ class SentenceDataset(Dataset):
     def _prepare_dataset(self):
         self.dataset = [
             {
-                'data': nn.functional.one_hot(torch.tensor(Digitize(sentence, padding=self.padding).encode(), dtype=torch.long), 131000),
-                'target': nn.functional.one_hot(torch.tensor(Digitize(sentence, padding=self.padding).encode(), dtype=torch.long), 131000)
+                'data': torch.tensor(Digitize(sentence, padding=self.padding).encode(), dtype=torch.long),
+                'target': torch.tensor(Digitize(sentence, padding=self.padding).encode(), dtype=torch.long)
             }
             for sentence in self.sentences
         ]

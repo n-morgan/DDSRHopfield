@@ -195,13 +195,12 @@ if __name__ == "__main__":
 
 
 
-    hopfield = Hopfield(input_size=embedding_dim)
+    hopfield = HopfieldLayer(input_size=512)
 
 # Output projection layer
 
 # Define the network structure
     network = Sequential(
-        embedding_layer,
         hopfield,          # Processes embeddings
     ).to(device=device)
 
