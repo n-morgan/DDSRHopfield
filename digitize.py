@@ -1,6 +1,8 @@
 
 from torchtune.models.mistral import mistral_tokenizer
 
+
+
 class Digitize(): 
     '''
     provides methods to encode and decode text
@@ -54,6 +56,8 @@ class Digitize():
 
 
         return self.decoding
+
+    
 
 if __name__ == "__main__":
     digitizer = Digitize("The quick brown fox", padding=512)

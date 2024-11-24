@@ -65,6 +65,7 @@ def train_epoch(network: Module,
     for sample_data in data_loader:
         data, target = sample_data[r'data'], sample_data[r'target']
         data, target = data.to(device=device), target.to(device=device)
+
         # Process data by Hopfield-based network.
 
         model_output = network.forward(input=data)

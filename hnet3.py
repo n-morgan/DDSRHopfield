@@ -24,9 +24,23 @@ dataset = SentenceDataset(file_path="1000sents.csv", padding=512)
 train_size = int(0.8 * len(dataset))
 eval_size = len(dataset) - train_size
 
+
+
+def custom_collate_fn(batch):
+    # Extract and stack 'data' and 'target' separately
+    data = torch.stack([item["data"] for item in batch], dim=0)  # Batch 'data'
+    target = torch.stack([item["target"] for item in batch], dim=0)  # Batch 'target'
+    return {"data": data, "target": target}
+
+
 train_dataset, eval_dataset = torch.utils.data.random_split(dataset, [train_size, eval_size])
 data_loader_train = DataLoader(train_dataset, batch_size=32, shuffle=True)
 data_loader_eval = DataLoader(eval_dataset, batch_size=32, shuffle=False)
+
+train_dataset, eval_dataset = torch.utils.data.random_split(dataset, [train_size, eval_size])
+data_loader_train = DataLoader(train_dataset, batch_size=32, collate_fn=custom_collate_fn, shuffle=True)
+data_loader_eval = DataLoader(eval_dataset, batch_size=32, collate_fn=custom_collate_fn, shuffle=False)
+
 
 
 
@@ -71,7 +85,7 @@ def train_epoch(network: Module,
 
         # Update network parameters.
         optimiser.zero_grad()
-        loss = binary_cross_entropy_with_logits(input=model_output.float(), target=target.float(), reduction=r'mean')
+        loss = binary_cross_entropy_with_logits(input=model_output, target=target, reduction=r'mean')
         loss.backward()
         clip_grad_norm_(parameters=network.parameters(), max_norm=1.0, norm_type=2)
         optimiser.step()
@@ -105,8 +119,8 @@ def eval_iter(network: Module,
 
             # Process data by Hopfield-based network.
             model_output = network.forward(input=data)
-            loss = binary_cross_entropy_with_logits(input=model_output, target=target.float(), reduction=r'mean')
-
+            loss = binary_cross_entropy_with_logits(input=model_output, target=target, reduction=r'mean')
+            print(loss)
             # Compute performance measures of current model.
             accuracy = (model_output.sigmoid().round() == target).to(dtype=torch.float32).mean()
             accuracies.append(accuracy.detach().item())
@@ -188,20 +202,26 @@ def plot_performance(loss: pd.DataFrame,
 if __name__ == "__main__":
     set_seed()
     
-    embedding_dim = 128
-
-    vocab_size = 130000
-    embedding_layer = Embedding(num_embeddings=vocab_size, embedding_dim=embedding_dim)
 
 
 
-    hopfield = Hopfield(input_size=embedding_dim)
+
+    # hopfield = HopfieldLayer(input_size=512, quantity=1000, lookup_weights_as_separated=True,lookup_targets_as_trainable=False)
+
+    hopfield = HopfieldLayer(
+        input_size=512,                           # R
+        quantity=1000,                             # W_K
+        lookup_weights_as_separated=True,
+        lookup_targets_as_trainable=False,
+        stored_pattern_as_static=True,
+        state_pattern_as_static=True,
+        pattern_projection_as_static=True)  
 
 # Output projection layer
-
+    # with torch.no_grad():
+        # hopfield_lookup.lookup_weights[:] = .unsqueeze(dim=0)
 # Define the network structure
     network = Sequential(
-        embedding_layer,
         hopfield,          # Processes embeddings
     ).to(device=device)
 
@@ -217,4 +237,3 @@ if __name__ == "__main__":
         num_epochs=20
     )
     plot_performance(loss=losses, accuracy=accuracies, log_file=f'/Users/velocity/Documents/Holder/Project/CodingStuff/18DDSR/hopfield_base.pdf')
-
