@@ -35,7 +35,7 @@ class ContinuousPatternRetriever:
     def continuous_update_rule(self, X, z):
         return X.T @ self.softmax(self.beta * X @ z)
 
-    def retrieve_store_continuous(self, num_patterns, num_plot=5):
+    def retrieve_store_continuous(self, num_patterns, num_plot=10):
         X = np.array(self.sentences[:num_patterns])
 
         for j in range(num_plot):

@@ -1,0 +1,152 @@
+
+********************
+Original Sentence: The old oak tree in the backyard, with its sprawling branches and deep roots, had stood for over a century, witnessing countless generations of laughter, sorrow, and change within the small family home.
+Tokenized (Original): [1, 415, 1571, 27407, 4718, 297, 272, 852, 10892, 28725, 395, 871, 24364, 1905, 15407, 304, 3534, 14766, 28725, 553, 4857, 354, 754, 264, 5445, 28725, 9149, 288, 23387, 16806, 302, 18211, 28725, 5279, 671, 28725, 304, 2268, 2373, 272, 1741, 2005, 1611, 28723, 2, 0, 0, 0, 0, 0]
+Masked: [    1   415  1571 27407  4718   297   272   852 10892 28725   395   871
+ 24364  1905 15407   304  3534 14766 28725   553  4857   354   754   264
+  5445     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 415, 1571, 27407, 4718, 297, 272, 852, 10892, 28725, 395, 871, 24364, 1905, 15407, 304, 3534, 14766, 28725, 553, 4857, 354, 754, 264, 5445, 28725, 9149, 288, 23387, 16806, 302, 18211, 28725, 5279, 671, 28725, 304, 2268, 2373, 272, 1741, 2005, 1611, 28723, 2, 0, 0, 0, 0, 0]
+Decoded Reconstruction: The old oak tree in the backyard, with its sprawling branches and deep roots, had stood for over a century, witnessing countless generations of laughter, sorrow, and change within the small family home. ⁇  ⁇  ⁇  ⁇  ⁇
+********************
+Original Sentence: As the storm clouds gathered ominously over the coastal town, the waves crashed against the shore with a rhythmic fury, sending a salty spray into the air and echoing in the ears of those who stood watching.
+Tokenized (Original): [1, 1136, 272, 9735, 16393, 13398, 289, 1240, 5019, 754, 272, 27809, 3736, 28725, 272, 13295, 27795, 1835, 272, 17298, 395, 264, 19834, 294, 285, 2272, 28725, 10313, 264, 3823, 884, 19084, 778, 272, 2423, 304, 3894, 288, 297, 272, 12446, 302, 1395, 693, 4857, 6265, 28723, 2, 0, 0]
+Masked: [    1  1136   272  9735 16393 13398   289  1240  5019   754   272 27809
+  3736 28725   272 13295 27795  1835   272 17298   395   264 19834   294
+   285     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 1136, 272, 9735, 16393, 13398, 289, 1240, 5019, 754, 272, 27809, 3736, 28725, 272, 13295, 27795, 1835, 272, 17298, 395, 264, 19834, 294, 285, 2272, 28725, 10313, 264, 3823, 884, 19084, 778, 272, 2423, 304, 3894, 288, 297, 272, 12446, 302, 1395, 693, 4857, 6265, 28723, 2, 0, 0]
+Decoded Reconstruction: As the storm clouds gathered ominously over the coastal town, the waves crashed against the shore with a rhythmic fury, sending a salty spray into the air and echoing in the ears of those who stood watching. ⁇  ⁇
+********************
+Original Sentence: The bustling market was alive with the voices of vendors shouting their daily specials, the scent of freshly baked bread mingling with the spicy aroma of exotic herbs, and the vivid colors of fruits and vegetables on display.
+Tokenized (Original): [1, 415, 20338, 1905, 2668, 403, 8630, 395, 272, 14549, 302, 27852, 23861, 652, 6790, 2841, 28713, 28725, 272, 21535, 302, 6138, 346, 287, 6343, 10714, 290, 288, 1905, 395, 272, 668, 2451, 26835, 28708, 302, 27541, 559, 1816, 28725, 304, 272, 24954, 9304, 302, 21566, 304, 19045, 356, 4249]
+Masked: [    1   415 20338  1905  2668   403  8630   395   272 14549   302 27852
+ 23861   652  6790  2841 28713 28725   272 21535   302  6138   346   287
+  6343     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 415, 20338, 1905, 2668, 403, 8630, 395, 272, 14549, 302, 27852, 23861, 652, 6790, 2841, 28713, 28725, 272, 21535, 302, 6138, 346, 287, 6343, 10714, 290, 288, 1905, 395, 272, 668, 2451, 26835, 28708, 302, 27541, 559, 1816, 28725, 304, 272, 24954, 9304, 302, 21566, 304, 19045, 356, 4249]
+Decoded Reconstruction: The bustling market was alive with the voices of vendors shouting their daily specials, the scent of freshly baked bread mingling with the spicy aroma of exotic herbs, and the vivid colors of fruits and vegetables on display
+********************
+Original Sentence: The scientist carefully mixed the chemicals in the lab, her eyes darting between the notes on her clipboard and the bubbling beaker in front of her, fully aware that a single misstep could turn the experiment into a disaster.
+Tokenized (Original): [1, 415, 24480, 9547, 9430, 272, 24920, 297, 272, 7867, 28725, 559, 2282, 281, 444, 288, 1444, 272, 8321, 356, 559, 13061, 3516, 304, 272, 22723, 6357, 347, 4776, 297, 2778, 302, 559, 28725, 5894, 5635, 369, 264, 2692, 4052, 7691, 829, 1527, 272, 6878, 778, 264, 17273, 28723, 2]
+Masked: [    1   415 24480  9547  9430   272 24920   297   272  7867 28725   559
+  2282   281   444   288  1444   272  8321   356   559 13061  3516   304
+   272     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 415, 24480, 9547, 9430, 272, 24920, 297, 272, 7867, 28725, 559, 2282, 281, 444, 288, 1444, 272, 8321, 356, 559, 13061, 3516, 304, 272, 22723, 6357, 347, 4776, 297, 2778, 302, 559, 28725, 5894, 5635, 369, 264, 2692, 4052, 7691, 829, 1527, 272, 6878, 778, 264, 17273, 28723, 2]
+Decoded Reconstruction: The scientist carefully mixed the chemicals in the lab, her eyes darting between the notes on her clipboard and the bubbling beaker in front of her, fully aware that a single misstep could turn the experiment into a disaster.
+********************
+Original Sentence: He stood at the edge of the cliff, looking down at the winding river below, its surface glistening in the golden glow of the setting sun as it cut its way through the dense forest and into the distant mountains.
+Tokenized (Original): [1, 650, 4857, 438, 272, 5358, 302, 272, 533, 2728, 28725, 2526, 1060, 438, 272, 275, 4763, 7782, 3624, 28725, 871, 5439, 1272, 392, 3250, 297, 272, 13863, 22998, 302, 272, 5587, 4376, 390, 378, 3119, 871, 1069, 1059, 272, 19319, 8613, 304, 778, 272, 15569, 13691, 28723, 2, 0]
+Masked: [    1   650  4857   438   272  5358   302   272   533  2728 28725  2526
+  1060   438   272   275  4763  7782  3624 28725   871  5439  1272   392
+  3250     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 650, 4857, 438, 272, 5358, 302, 272, 533, 2728, 28725, 2526, 1060, 438, 272, 275, 4763, 7782, 3624, 28725, 871, 5439, 1272, 392, 3250, 297, 272, 13863, 22998, 302, 272, 5587, 4376, 390, 378, 3119, 871, 1069, 1059, 272, 19319, 8613, 304, 778, 272, 15569, 13691, 28723, 2, 0]
+Decoded Reconstruction: He stood at the edge of the cliff, looking down at the winding river below, its surface glistening in the golden glow of the setting sun as it cut its way through the dense forest and into the distant mountains. ⁇
+(DDSR) velocity@Nathaniels-MacBook-Pro 18DDSR % python contnet.py
+********************
+Original Sentence: The old oak tree in the backyard, with its sprawling branches and deep roots, had stood for over a century, witnessing countless generations of laughter, sorrow, and change within the small family home.
+Tokenized (Original): [1, 415, 1571, 27407, 4718, 297, 272, 852, 10892, 28725, 395, 871, 24364, 1905, 15407, 304, 3534, 14766, 28725, 553, 4857, 354, 754, 264, 5445, 28725, 9149, 288, 23387, 16806, 302, 18211, 28725, 5279, 671, 28725, 304, 2268, 2373, 272, 1741, 2005, 1611, 28723, 2, 0, 0, 0, 0, 0]
+Masked: [    1   415  1571 27407  4718   297   272   852 10892 28725   395   871
+ 24364  1905 15407   304  3534 14766 28725   553  4857   354   754   264
+  5445     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 415, 1571, 27407, 4718, 297, 272, 852, 10892, 28725, 395, 871, 24364, 1905, 15407, 304, 3534, 14766, 28725, 553, 4857, 354, 754, 264, 5445, 28725, 9149, 288, 23387, 16806, 302, 18211, 28725, 5279, 671, 28725, 304, 2268, 2373, 272, 1741, 2005, 1611, 28723, 2, 0, 0, 0, 0, 0]
+Decoded Reconstruction: The old oak tree in the backyard, with its sprawling branches and deep roots, had stood for over a century, witnessing countless generations of laughter, sorrow, and change within the small family home. ⁇  ⁇  ⁇  ⁇  ⁇
+********************
+Original Sentence: As the storm clouds gathered ominously over the coastal town, the waves crashed against the shore with a rhythmic fury, sending a salty spray into the air and echoing in the ears of those who stood watching.
+Tokenized (Original): [1, 1136, 272, 9735, 16393, 13398, 289, 1240, 5019, 754, 272, 27809, 3736, 28725, 272, 13295, 27795, 1835, 272, 17298, 395, 264, 19834, 294, 285, 2272, 28725, 10313, 264, 3823, 884, 19084, 778, 272, 2423, 304, 3894, 288, 297, 272, 12446, 302, 1395, 693, 4857, 6265, 28723, 2, 0, 0]
+Masked: [    1  1136   272  9735 16393 13398   289  1240  5019   754   272 27809
+  3736 28725   272 13295 27795  1835   272 17298   395   264 19834   294
+   285     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 1136, 272, 9735, 16393, 13398, 289, 1240, 5019, 754, 272, 27809, 3736, 28725, 272, 13295, 27795, 1835, 272, 17298, 395, 264, 19834, 294, 285, 2272, 28725, 10313, 264, 3823, 884, 19084, 778, 272, 2423, 304, 3894, 288, 297, 272, 12446, 302, 1395, 693, 4857, 6265, 28723, 2, 0, 0]
+Decoded Reconstruction: As the storm clouds gathered ominously over the coastal town, the waves crashed against the shore with a rhythmic fury, sending a salty spray into the air and echoing in the ears of those who stood watching. ⁇  ⁇
+********************
+Original Sentence: The bustling market was alive with the voices of vendors shouting their daily specials, the scent of freshly baked bread mingling with the spicy aroma of exotic herbs, and the vivid colors of fruits and vegetables on display.
+Tokenized (Original): [1, 415, 20338, 1905, 2668, 403, 8630, 395, 272, 14549, 302, 27852, 23861, 652, 6790, 2841, 28713, 28725, 272, 21535, 302, 6138, 346, 287, 6343, 10714, 290, 288, 1905, 395, 272, 668, 2451, 26835, 28708, 302, 27541, 559, 1816, 28725, 304, 272, 24954, 9304, 302, 21566, 304, 19045, 356, 4249]
+Masked: [    1   415 20338  1905  2668   403  8630   395   272 14549   302 27852
+ 23861   652  6790  2841 28713 28725   272 21535   302  6138   346   287
+  6343     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 415, 20338, 1905, 2668, 403, 8630, 395, 272, 14549, 302, 27852, 23861, 652, 6790, 2841, 28713, 28725, 272, 21535, 302, 6138, 346, 287, 6343, 10714, 290, 288, 1905, 395, 272, 668, 2451, 26835, 28708, 302, 27541, 559, 1816, 28725, 304, 272, 24954, 9304, 302, 21566, 304, 19045, 356, 4249]
+Decoded Reconstruction: The bustling market was alive with the voices of vendors shouting their daily specials, the scent of freshly baked bread mingling with the spicy aroma of exotic herbs, and the vivid colors of fruits and vegetables on display
+********************
+Original Sentence: The scientist carefully mixed the chemicals in the lab, her eyes darting between the notes on her clipboard and the bubbling beaker in front of her, fully aware that a single misstep could turn the experiment into a disaster.
+Tokenized (Original): [1, 415, 24480, 9547, 9430, 272, 24920, 297, 272, 7867, 28725, 559, 2282, 281, 444, 288, 1444, 272, 8321, 356, 559, 13061, 3516, 304, 272, 22723, 6357, 347, 4776, 297, 2778, 302, 559, 28725, 5894, 5635, 369, 264, 2692, 4052, 7691, 829, 1527, 272, 6878, 778, 264, 17273, 28723, 2]
+Masked: [    1   415 24480  9547  9430   272 24920   297   272  7867 28725   559
+  2282   281   444   288  1444   272  8321   356   559 13061  3516   304
+   272     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 415, 24480, 9547, 9430, 272, 24920, 297, 272, 7867, 28725, 559, 2282, 281, 444, 288, 1444, 272, 8321, 356, 559, 13061, 3516, 304, 272, 22723, 6357, 347, 4776, 297, 2778, 302, 559, 28725, 5894, 5635, 369, 264, 2692, 4052, 7691, 829, 1527, 272, 6878, 778, 264, 17273, 28723, 2]
+Decoded Reconstruction: The scientist carefully mixed the chemicals in the lab, her eyes darting between the notes on her clipboard and the bubbling beaker in front of her, fully aware that a single misstep could turn the experiment into a disaster.
+********************
+Original Sentence: He stood at the edge of the cliff, looking down at the winding river below, its surface glistening in the golden glow of the setting sun as it cut its way through the dense forest and into the distant mountains.
+Tokenized (Original): [1, 650, 4857, 438, 272, 5358, 302, 272, 533, 2728, 28725, 2526, 1060, 438, 272, 275, 4763, 7782, 3624, 28725, 871, 5439, 1272, 392, 3250, 297, 272, 13863, 22998, 302, 272, 5587, 4376, 390, 378, 3119, 871, 1069, 1059, 272, 19319, 8613, 304, 778, 272, 15569, 13691, 28723, 2, 0]
+Masked: [    1   650  4857   438   272  5358   302   272   533  2728 28725  2526
+  1060   438   272   275  4763  7782  3624 28725   871  5439  1272   392
+  3250     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 650, 4857, 438, 272, 5358, 302, 272, 533, 2728, 28725, 2526, 1060, 438, 272, 275, 4763, 7782, 3624, 28725, 871, 5439, 1272, 392, 3250, 297, 272, 13863, 22998, 302, 272, 5587, 4376, 390, 378, 3119, 871, 1069, 1059, 272, 19319, 8613, 304, 778, 272, 15569, 13691, 28723, 2, 0]
+Decoded Reconstruction: He stood at the edge of the cliff, looking down at the winding river below, its surface glistening in the golden glow of the setting sun as it cut its way through the dense forest and into the distant mountains. ⁇
+********************
+Original Sentence: The young artist spent hours in her tiny studio, blending colors on the canvas and listening to her favorite jazz records, completely absorbed in the creation of a masterpiece that captured the essence of her dreams.
+Tokenized (Original): [1, 415, 2518, 7325, 5223, 3316, 297, 559, 8887, 9659, 28725, 843, 2570, 9304, 356, 272, 14499, 304, 9857, 298, 559, 6656, 19460, 7806, 28725, 4716, 26996, 297, 272, 9313, 302, 264, 5968, 17152, 369, 13382, 272, 21213, 302, 559, 12232, 28723, 2, 0, 0, 0, 0, 0, 0, 0]
+Masked: [    1   415  2518  7325  5223  3316   297   559  8887  9659 28725   843
+  2570  9304   356   272 14499   304  9857   298   559  6656 19460  7806
+ 28725     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 415, 2518, 7325, 5223, 3316, 297, 559, 8887, 9659, 28725, 843, 2570, 9304, 356, 272, 14499, 304, 9857, 298, 559, 6656, 19460, 7806, 28725, 4716, 26996, 297, 272, 9313, 302, 264, 5968, 17152, 369, 13382, 272, 21213, 302, 559, 12232, 28723, 2, 0, 0, 0, 0, 0, 0, 0]
+Decoded Reconstruction: The young artist spent hours in her tiny studio, blending colors on the canvas and listening to her favorite jazz records, completely absorbed in the creation of a masterpiece that captured the essence of her dreams. ⁇  ⁇  ⁇  ⁇  ⁇  ⁇  ⁇
+********************
+Original Sentence: The old bookstore was a maze of towering shelves, each filled with yellowed pages and leather-bound volumes, and the faint scent of paper and dust that seemed to whisper the stories of the past to every visitor.
+Tokenized (Original): [1, 415, 1571, 1820, 5987, 403, 264, 290, 7273, 302, 11201, 2131, 28201, 28725, 1430, 6774, 395, 9684, 286, 6718, 304, 13508, 28733, 7250, 20535, 28725, 304, 272, 16603, 21535, 302, 3830, 304, 9188, 369, 3593, 298, 9502, 272, 5979, 302, 272, 2609, 298, 1012, 19446, 28723, 2, 0, 0]
+Masked: [    1   415  1571  1820  5987   403   264   290  7273   302 11201  2131
+ 28201 28725  1430  6774   395  9684   286  6718   304 13508 28733  7250
+ 20535     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 415, 1571, 1820, 5987, 403, 264, 290, 7273, 302, 11201, 2131, 28201, 28725, 1430, 6774, 395, 9684, 286, 6718, 304, 13508, 28733, 7250, 20535, 28725, 304, 272, 16603, 21535, 302, 3830, 304, 9188, 369, 3593, 298, 9502, 272, 5979, 302, 272, 2609, 298, 1012, 19446, 28723, 2, 0, 0]
+Decoded Reconstruction: The old bookstore was a maze of towering shelves, each filled with yellowed pages and leather-bound volumes, and the faint scent of paper and dust that seemed to whisper the stories of the past to every visitor. ⁇  ⁇
+********************
+Original Sentence: With each passing moment, the excitement in the room grew as the audience waited in anticipation for the curtain to rise, their whispers filled with curiosity and their eyes fixed on the grand stage before them.
+Tokenized (Original): [1, 2326, 1430, 9720, 2470, 28725, 272, 17163, 297, 272, 2003, 8108, 390, 272, 7938, 10547, 297, 12595, 352, 354, 272, 1191, 12092, 298, 8418, 28725, 652, 8037, 4837, 6774, 395, 22953, 304, 652, 2282, 6321, 356, 272, 3487, 5430, 1159, 706, 28723, 2, 0, 0, 0, 0, 0, 0]
+Masked: [    1  2326  1430  9720  2470 28725   272 17163   297   272  2003  8108
+   390   272  7938 10547   297 12595   352   354   272  1191 12092   298
+  8418     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 2326, 1430, 9720, 2470, 28725, 272, 17163, 297, 272, 2003, 8108, 390, 272, 7938, 10547, 297, 12595, 352, 354, 272, 1191, 12092, 298, 8418, 28725, 652, 8037, 4837, 6774, 395, 22953, 304, 652, 2282, 6321, 356, 272, 3487, 5430, 1159, 706, 28723, 2, 0, 0, 0, 0, 0, 0]
+Decoded Reconstruction: With each passing moment, the excitement in the room grew as the audience waited in anticipation for the curtain to rise, their whispers filled with curiosity and their eyes fixed on the grand stage before them. ⁇  ⁇  ⁇  ⁇  ⁇  ⁇
+********************
+Original Sentence: The child carefully placed the final block on top of his towering LEGO structure, stepping back to admire his creation as it wobbled precariously for a moment before settling into place with a proud smile on his face.
+Tokenized (Original): [1, 415, 1502, 9547, 6838, 272, 1480, 2724, 356, 1830, 302, 516, 11201, 2131, 14181, 11628, 4693, 28725, 25719, 852, 298, 5055, 536, 516, 9313, 390, 378, 275, 598, 9704, 4467, 283, 7990, 354, 264, 2470, 1159, 4641, 1905, 778, 1633, 395, 264, 9393, 6458, 356, 516, 2105, 28723, 2]
+Masked: [    1   415  1502  9547  6838   272  1480  2724   356  1830   302   516
+ 11201  2131 14181 11628  4693 28725 25719   852   298  5055   536   516
+  9313     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 415, 1502, 9547, 6838, 272, 1480, 2724, 356, 1830, 302, 516, 11201, 2131, 14181, 11628, 4693, 28725, 25719, 852, 298, 5055, 536, 516, 9313, 390, 378, 275, 598, 9704, 4467, 283, 7990, 354, 264, 2470, 1159, 4641, 1905, 778, 1633, 395, 264, 9393, 6458, 356, 516, 2105, 28723, 2]
+Decoded Reconstruction: The child carefully placed the final block on top of his towering LEGO structure, stepping back to admire his creation as it wobbled precariously for a moment before settling into place with a proud smile on his face.
+********************
+Original Sentence: After months of training and endless practice, the athlete finally stepped onto the track, feeling the cool breeze against his face and the adrenaline surge through his veins as the starting gun fired and he pushed forward into the race.
+Tokenized (Original): [1, 2530, 3370, 302, 4154, 304, 18284, 5245, 28725, 272, 20238, 2041, 4251, 9593, 5380, 272, 3508, 28725, 4622, 272, 5106, 24284, 1835, 516, 2105, 304, 272, 616, 951, 282, 473, 24048, 1059, 516, 1773, 1126, 390, 272, 5615, 4582, 12196, 304, 400, 9012, 3814, 778, 272, 5941, 28723, 2]
+Masked: [    1  2530  3370   302  4154   304 18284  5245 28725   272 20238  2041
+  4251  9593  5380   272  3508 28725  4622   272  5106 24284  1835   516
+  2105     0     0     0     0     0     0     0     0     0     0     0
+     0     0     0     0     0     0     0     0     0     0     0     0
+     0     0]
+Reconstructed (tokenized): [1, 2530, 3370, 302, 4154, 304, 18284, 5245, 28725, 272, 20238, 2041, 4251, 9593, 5380, 272, 3508, 28725, 4622, 272, 5106, 24284, 1835, 516, 2105, 304, 272, 616, 951, 282, 473, 24048, 1059, 516, 1773, 1126, 390, 272, 5615, 4582, 12196, 304, 400, 9012, 3814, 778, 272, 5941, 28723, 2]
+Decoded Reconstruction: After months of training and endless practice, the athlete finally stepped onto the track, feeling the cool breeze against his face and the adrenaline surge through his veins as the starting gun fired and he pushed forward into the race.
